@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "Listar Pedidos";
+    var listPedidos = ViewData["ListaPedidos"] as List<WebAppPedidos.Models.Pedido>;
 }
 
 <title>@ViewData["Title"]</title>
@@ -12,36 +13,30 @@
         text-align: left;
     }
 </style>
-<h2>Gerenciamento de Pedidos</h2>
-<p>
-    <a href="CadastrarPedido.html">Cadastrar Pedido</a>
-    <br />
-    <table>
-        <tr>
-            <th>Produto</th>
-            <th>Quantidade</th>
-            <th>Valor</th>
-            <th>Data</th>
-            <th>Fornecedor</th>
-        </tr>
-        <tr>
-            <td>Bolacha</td>
-            <td>100</td>
-            <td>4</td>
-            <td>02/07/2020 21:00:00</td>
-            <td>José</td>
-        </tr>
-        <tr>
-            <td>Arroz</td>
-            <td>150</td>
-            <td>6.5</td>
-            <td>02/07/2020 21:00:00</td>
-            <td>Maria</td>
-        </tr>
-    </table>
-</p>
 
-<p style="float: left; "><b>Data de atualização:</b>
+<h2>Gerenciamento de Pedidos</h2>
+
+<table>
+    <tr>
+        <th>Produto</th>
+        <th>Quantidade</th>
+        <th>Valor</th>
+        <th>Data</th>
+        <th>Fornecedor</th>
+    </tr>
+    @foreach (WebAppPedidos.Models.Pedido pedido in listPedidos)
+    {
+        <tr>
+            <td>@pedido.Produto</td>
+            <td>@pedido.Quantidade</td>
+            <td>@pedido.Valor</td>
+            <td>@pedido.Data</td>
+            <td>@pedido.Fornecedor</td>
+        </tr>
+    }
+</table>
+
+<p style="float: left;"><b>Data de atualização:</b>
 <p style="float: left;" id="data"></p>
 
 <script>

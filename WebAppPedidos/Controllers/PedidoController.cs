@@ -9,16 +9,15 @@ namespace WebAppPedidos.Controllers
 {
     public class PedidoController : Controller
     {
-        // GET: /pedido/
         public IActionResult ListarPedidos()
         {
-            return View();
-        }
-        // 
-        // GET: /pedido/Welcome?name=Ana 
-        public IActionResult Welcome(string name)
-        {
-            ViewData["name"] = name;
+            List<Pedido> pedidos = new List<Pedido>() {
+            new Pedido(1, "Bolacha", 100, 4, new DateTime(), "João"),
+            new Pedido(1, "Arroz", 150, 6.5, new DateTime(), "Maria")
+            };
+
+            ViewData["ListaPedidos"] = pedidos;
+
             return View();
         }
     }

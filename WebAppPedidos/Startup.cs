@@ -13,11 +13,6 @@ namespace WebAppPedidos
 {
     public class Startup
     {
-        static List<Pedido> pedidos = new List<Pedido>() {
-            new Pedido(1, "Bolacha", 100, 4, new DateTime(), "João"),
-            new Pedido(1, "Arroz", 150, 6.5, new DateTime(), "Maria")
-        };
-
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
