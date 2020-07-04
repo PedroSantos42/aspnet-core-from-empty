@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewData["Title"] = "Listar Pedidos";
+}
+
+<title>@ViewData["Title"]</title>
+
+<meta charset="utf-8" />
+<style>
+    table, th, td {
+        border: 1px solid black;
+        text-align: left;
+    }
+</style>
+<h2>Gerenciamento de Pedidos</h2>
+<p>
+    <a href="CadastrarPedido.html">Cadastrar Pedido</a>
+    <br />
+    <table>
+        <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Valor</th>
+            <th>Data</th>
+            <th>Fornecedor</th>
+        </tr>
+        <tr>
+            <td>Bolacha</td>
+            <td>100</td>
+            <td>4</td>
+            <td>02/07/2020 21:00:00</td>
+            <td>José</td>
+        </tr>
+        <tr>
+            <td>Arroz</td>
+            <td>150</td>
+            <td>6.5</td>
+            <td>02/07/2020 21:00:00</td>
+            <td>Maria</td>
+        </tr>
+    </table>
+</p>
+
+<p style="float: left; "><b>Data de atualização:</b>
+<p style="float: left;" id="data"></p>
+
+<script>
+    var d = new Date();
+    var today = new Date();
+    var yyyy = today.getFullYear();
+
+    var dd = today.getDate().toString();
+    if (dd.length == 1) {
+        dd = '0' + dd;
+    }
+
+    var mm = (today.getMonth() + 1).toString();
+    if (mm.length == 1) {
+        mm = '0' + mm;
+    }
+
+    var hours = today.getHours();
+    if (hours.toString().length == 1) {
+        hours = '0' + hours;
+    }
+
+    var minutes = today.getMinutes();
+    if (minutes.toString().length == 1) {
+        minutes = '0' + minutes;
+    }
+
+    var seconds = today.getSeconds();
+    if (seconds.toString().length == 1) {
+        seconds = '0' + seconds;
+    }
+
+    d = dd + "/" + mm + "/" + yyyy + " " + hours + ":" + minutes + ":" + seconds;
+    document.getElementById("data").innerHTML = d;
+</script>
