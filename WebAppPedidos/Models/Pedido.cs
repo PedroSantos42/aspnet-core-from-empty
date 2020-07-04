@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebAppPedidos.Models
 {
@@ -37,7 +35,6 @@ namespace WebAppPedidos.Models
         public List<Pedido> ListarPedidos()
         {
             List<Pedido> list = new List<Pedido>();
-
             return list;
         }
     }

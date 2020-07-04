@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+pdBbL/eKGVCaD8hd8c4jzq1lzoYhOgF7vQqOGwzaYUlQdJPRZTS3xoHSX+/SW9PuArXo2V0hJCl2fRygH1VyQ==",
+  "dgSpecHash": "Qq7QeWUeSBtkNzfQnFRn31MMWrZmuSiS93ZBCA3UnBJ2VqIzCJWG4ztlPIDtK86KLNirH3Ng9dATreh22WIUSg==",
   "success": true,
-  "projectFilePath": "C:\\Code\\aspnet-core-from-empty\\WebAppPedidos\\WebAppPedidos.csproj",
+  "projectFilePath": "C:\\Code\\workana\\aspnet-core-from-empty\\WebAppPedidos\\WebAppPedidos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\imperio moveis e ele\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.5\\microsoft.aspnetcore.cryptography.internal.3.1.5.nupkg.sha512",
     "C:\\Users\\imperio moveis e ele\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.5\\microsoft.aspnetcore.cryptography.keyderivation.3.1.5.nupkg.sha512",

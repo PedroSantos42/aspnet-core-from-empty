@@ -9136,11 +9136,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Code\\aspnet-core-from-empty\\WebAppPedidos\\WebAppPedidos.csproj",
+      "projectUniqueName": "C:\\Code\\workana\\aspnet-core-from-empty\\WebAppPedidos\\WebAppPedidos.csproj",
       "projectName": "WebAppPedidos",
-      "projectPath": "C:\\Code\\aspnet-core-from-empty\\WebAppPedidos\\WebAppPedidos.csproj",
+      "projectPath": "C:\\Code\\workana\\aspnet-core-from-empty\\WebAppPedidos\\WebAppPedidos.csproj",
       "packagesPath": "C:\\Users\\imperio moveis e ele\\.nuget\\packages\\",
-      "outputPath": "C:\\Code\\aspnet-core-from-empty\\WebAppPedidos\\obj\\",
+      "outputPath": "C:\\Code\\workana\\aspnet-core-from-empty\\WebAppPedidos\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\imperio moveis e ele\\AppData\\Roaming\\NuGet\\NuGet.Config",
