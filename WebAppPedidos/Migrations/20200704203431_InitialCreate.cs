@@ -13,7 +13,7 @@ namespace WebAppPedidos.Migrations
                 {
                     PedidoId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Produto = table.Column<string>(nullable: true),
+                    Produto = table.Column<string>(nullable: false),
                     Quantidade = table.Column<int>(nullable: false),
                     Valor = table.Column<double>(nullable: false),
                     Data = table.Column<DateTime>(nullable: false),

@@ -7,12 +7,19 @@ namespace WebAppPedidos.Models
     public class Pedido
     {
         public int PedidoId { get; set; }
+        
+        [Required]
         public string Produto { get; set; }
+        
         public int Quantidade { get; set; }
+        
+        [Required]
+        [DataType(DataType.Currency)]
         public double Valor { get; set; }
-
+        
         [DataType(DataType.Date)]
         public DateTime Data { get; set; }
+        
         public string Fornecedor { get; set; }
 
         public Pedido() { }

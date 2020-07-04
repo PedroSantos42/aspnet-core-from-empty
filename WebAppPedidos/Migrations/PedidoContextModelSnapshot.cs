@@ -33,6 +33,7 @@ namespace WebAppPedidos.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Produto")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Quantidade")

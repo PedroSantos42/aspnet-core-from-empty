@@ -1,16 +1,16 @@
-﻿<title>Cadastro de Pedidos</title>
+﻿
+<title>Cadastro de Pedidos</title>
 
 <body>
     <h2>Criar Pedido</h2>
     <br />
     <div class="row">
         <div class="col-md-4">
-
             @using (Html.BeginForm("SalvarPedido", "Pedido", FormMethod.Post))
             {
                 <div class="form-group">
                     <label for="produto">Produto</label><br>
-                    <input type="text" id="produto" name="produto"><br>
+                    <input type="text" id="produto" name="produto" required><br>
                 </div>
                 <br />
                 <div class="form-group">
@@ -20,7 +20,12 @@
                 <br />
                 <div class="form-group">
                     <label for="valor">Valor</label><br>
-                    <input type="text" id="valor" name="valor"><br>
+                    <input type="text" id="valor" name="valor" required><br>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="data">Data</label><br>
+                    <input type="text" id="data" name="data"><br>
                 </div>
                 <br />
                 <div class="form-group">

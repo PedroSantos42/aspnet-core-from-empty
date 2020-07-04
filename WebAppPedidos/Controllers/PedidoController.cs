@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +22,13 @@ namespace WebAppPedidos.Controllers
 
         public IActionResult ListarPedidos()
         {
-            List<Pedido> list = _context.Pedido.Where(p => p.PedidoId > 0).ToList();
+            List<Pedido> list;
+
+            try
+            {
+                list = _context.Pedido.Where(p => p != null).ToList();
+            }
+            catch (Exception e) { throw e; }
 
             ViewData["ListaPedidos"] = list;
 
@@ -34,9 +43,23 @@ namespace WebAppPedidos.Controllers
         [HttpPost]
         public async Task<IActionResult> SalvarPedido([Bind("PedidoId, Produto, Quantidade, Valor, Data, Fornecedor")] Pedido pedido)
         {
-            pedido.Data = DateTime.Now;
-            _context.Add(pedido);
-            await _context.SaveChangesAsync();
+            try
+            {
+                Pedido p = _context.Pedido.FirstOrDefault(x => x.Produto == pedido.Produto);
+
+                if (p != null)
+                {
+                    ViewBag.Message = "Falha ao cadastrar: Produto existente.";
+                    return RedirectToAction(nameof(CadastrarPedido));
+                }
+                else
+                {
+                    pedido.Data = DateTime.Now;
+                    _context.Add(pedido);
+                    await _context.SaveChangesAsync();
+                }
+            }
+            catch (Exception e) { throw e; }
             return RedirectToAction(nameof(ListarPedidos));
         }
     }

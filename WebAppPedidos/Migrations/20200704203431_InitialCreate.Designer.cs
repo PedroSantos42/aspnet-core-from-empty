@@ -10,7 +10,7 @@ using WebAppPedidos.Data;
 namespace WebAppPedidos.Migrations
 {
     [DbContext(typeof(PedidoContext))]
-    [Migration("20200704040339_InitialCreate")]
+    [Migration("20200704203431_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,6 +35,7 @@ namespace WebAppPedidos.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Produto")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Quantidade")
