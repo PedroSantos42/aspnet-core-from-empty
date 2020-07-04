@@ -1,10 +1,6 @@
-﻿
-@{
-    ViewData["Title"] = "Listar Pedidos";
-    var listPedidos = ViewData["ListaPedidos"] as List<WebAppPedidos.Models.Pedido>;
-}
+﻿@{ var listPedidos = ViewData["ListaPedidos"] as List<WebAppPedidos.Models.Pedido>; }
 
-<title>@ViewData["Title"]</title>
+<title>Lista de Pedidos</title>
 
 <meta charset="utf-8" />
 <style>
@@ -14,61 +10,74 @@
     }
 </style>
 
-<h2>Gerenciamento de Pedidos</h2>
+<body>
+    <h1>Gerenciamento de Pedidos</h1>
 
-<table>
-    <tr>
-        <th>Produto</th>
-        <th>Quantidade</th>
-        <th>Valor</th>
-        <th>Data</th>
-        <th>Fornecedor</th>
-    </tr>
-    @foreach (WebAppPedidos.Models.Pedido pedido in listPedidos)
-    {
+    <a href="/Pedido/CadastrarPedido">Cadastrar Pedido</a>
+    
+    <br />
+    <br />
+
+    <table>
         <tr>
-            <td>@pedido.Produto</td>
-            <td>@pedido.Quantidade</td>
-            <td>@pedido.Valor</td>
-            <td>@pedido.Data</td>
-            <td>@pedido.Fornecedor</td>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Valor</th>
+            <th>Data</th>
+            <th>Fornecedor</th>
         </tr>
-    }
-</table>
+        @{
+            if (listPedidos != null)
+            {
+                foreach (WebAppPedidos.Models.Pedido pedido in listPedidos)
+                {
+                    <tr>
+                        <td>@pedido.Produto</td>
+                        <td>@pedido.Quantidade</td>
+                        <td>@pedido.Valor</td>
+                        <td>@pedido.Data</td>
+                        <td>@pedido.Fornecedor</td>
+                    </tr>
+                }
+            }
+        }
+    </table>
 
-<p style="float: left;"><b>Data de atualização:</b>
-<p style="float: left;" id="data"></p>
+    <p style="float: left;"><b>Data de atualização:</b>
+    <p style="float: left;" id="data"></p>
+
+</body>
 
 <script>
     var d = new Date();
-    var today = new Date();
-    var yyyy = today.getFullYear();
+    var hoje = new Date();
+    var yyyy = hoje.getFullYear();
 
-    var dd = today.getDate().toString();
+    var dd = hoje.getDate().toString();
     if (dd.length == 1) {
         dd = '0' + dd;
     }
 
-    var mm = (today.getMonth() + 1).toString();
+    var mm = (hoje.getMonth() + 1).toString();
     if (mm.length == 1) {
         mm = '0' + mm;
     }
 
-    var hours = today.getHours();
-    if (hours.toString().length == 1) {
-        hours = '0' + hours;
+    var horas = hoje.getHours();
+    if (horas.toString().length == 1) {
+        horas = '0' + horas;
     }
 
-    var minutes = today.getMinutes();
-    if (minutes.toString().length == 1) {
-        minutes = '0' + minutes;
+    var minutos = hoje.getMinutes();
+    if (minutos.toString().length == 1) {
+        minutos = '0' + minutos;
     }
 
-    var seconds = today.getSeconds();
-    if (seconds.toString().length == 1) {
-        seconds = '0' + seconds;
+    var segundos = hoje.getSeconds();
+    if (segundos.toString().length == 1) {
+        segundos = '0' + segundos;
     }
 
-    d = dd + "/" + mm + "/" + yyyy + " " + hours + ":" + minutes + ":" + seconds;
+    d = dd + "/" + mm + "/" + yyyy + " " + horas + ":" + minutos + ":" + segundos;
     document.getElementById("data").innerHTML = d;
 </script>

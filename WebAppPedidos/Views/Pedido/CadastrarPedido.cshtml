@@ -1,0 +1,37 @@
+﻿<title>Cadastro de Pedidos</title>
+
+<body>
+    <h2>Criar Pedido</h2>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+
+            @using (Html.BeginForm("SalvarPedido", "Pedido", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <label for="produto">Produto</label><br>
+                    <input type="text" id="produto" name="produto"><br>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="quantidade">Quantidade</label><br>
+                    <input type="text" id="quantidade" name="quantidade"><br>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="valor">Valor</label><br>
+                    <input type="text" id="valor" name="valor"><br>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="fornecedor">Fornecedor</label><br>
+                    <input type="text" id="fornecedor" name="fornecedor"><br>
+                </div>
+                <br />
+                <br />
+                <input type="submit" value="Salvar" />
+            }
+        </div>
+    </div>
+</body>

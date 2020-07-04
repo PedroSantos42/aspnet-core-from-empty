@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,6 +12,8 @@ namespace WebAppPedidos.Models
         public string Produto { get; set; }
         public int Quantidade { get; set; }
         public double Valor { get; set; }
+
+        [DataType(DataType.Date)]
         public DateTime Data { get; set; }
         public string Fornecedor { get; set; }
 
