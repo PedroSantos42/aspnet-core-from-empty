@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -33,6 +34,7 @@ namespace WebAppPedidos.Controllers
         [HttpPost]
         public async Task<IActionResult> SalvarPedido([Bind("PedidoId, Produto, Quantidade, Valor, Data, Fornecedor")] Pedido pedido)
         {
+            pedido.Data = DateTime.Now;
             _context.Add(pedido);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(ListarPedidos));
