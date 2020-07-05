@@ -348,3 +348,4 @@ C:\Code\workana\aspnet-core-from-empty\WebAppPedidos\obj\Debug\netcoreapp3.1\sta
 C:\Code\workana\aspnet-core-from-empty\WebAppPedidos\obj\Debug\netcoreapp3.1\WebAppPedidos.dll
 C:\Code\workana\aspnet-core-from-empty\WebAppPedidos\obj\Debug\netcoreapp3.1\WebAppPedidos.pdb
 C:\Code\workana\aspnet-core-from-empty\WebAppPedidos\obj\Debug\netcoreapp3.1\WebAppPedidos.genruntimeconfig.cache
+C:\Code\workana\aspnet-core-from-empty\WebAppPedidos\obj\Debug\netcoreapp3.1\Razor\Views\Pedido\EditarPedido.cshtml.g.cs

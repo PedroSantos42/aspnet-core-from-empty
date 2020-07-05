@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +38,7 @@ namespace WebAppPedidos.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarPedido([Bind("PedidoId, Produto, Quantidade, Valor, Data, Fornecedor")] Pedido pedido)
+        public async Task<IActionResult> Salvar([Bind("PedidoId, Produto, Quantidade, Valor, Data, Fornecedor")] Pedido pedido)
         {
             try
             {
@@ -54,12 +51,37 @@ namespace WebAppPedidos.Controllers
                 }
                 else
                 {
-                    pedido.Data = DateTime.Now;
                     _context.Add(pedido);
                     await _context.SaveChangesAsync();
                 }
             }
             catch (Exception e) { throw e; }
+            return RedirectToAction(nameof(ListarPedidos));
+        }
+
+        public IActionResult EditarPedido(int id)
+        {
+            var pedido = _context.Pedido.FirstOrDefault(p => p.PedidoId == id);
+            if (pedido != null)
+            {
+                ViewData["pedido"] = pedido;
+            }
+            return View();
+        }
+
+        public IActionResult Editar(Pedido pedido)
+        {
+            pedido.Data = DateTime.Now;
+            _context.Pedido.Update(pedido);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(ListarPedidos));
+        }
+
+        public IActionResult RemoverPedido(int id)
+        {
+            var pedido = _context.Pedido.FirstOrDefault(p => p.PedidoId == id);
+            _context.Pedido.Remove(pedido);
+            _context.SaveChanges();
             return RedirectToAction(nameof(ListarPedidos));
         }
     }
