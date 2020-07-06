@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using WebAppPedidos.Data;
 using WebAppPedidos.Models;
 
-// Cláudia Urbano da Cruz
 namespace WebAppPedidos.Controllers
 {
+    // Gustavo Anderson
     public class PedidoController : Controller
     {
         private readonly PedidoContext _context;
@@ -17,39 +17,35 @@ namespace WebAppPedidos.Controllers
         {
             _context = context;
         }
-
-
         public IActionResult CadastrarPedido()
         {
             ViewData["existePedido"] = TempData["existePedidoInfo"];
             return View();
         }
-
         public IActionResult ListarPedidos()
         {
-            List<Pedido> list;
+            List<Pedido> lista;
             try
             {
-                list = _context.Pedido.Where(p => p != null).ToList();
+                lista = _context.Pedido.Where(p => p != null).ToList();
             }
-            catch (Exception e) 
-            { 
-                throw e; 
+            catch (Exception exception)
+            {
+                throw exception;
             }
-            ViewData["ListaPedidos"] = list;
+            ViewData["ListaPedidos"] = lista;
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> SalvarPedido([Bind("PedidoId, Produto, Quantidade, Valor, Data, Fornecedor")] Pedido pedido)
         {
             try
             {
-                Pedido p = _context.Pedido.FirstOrDefault(x => x.Produto == pedido.Produto);
+                Pedido p = _context.Pedido.FirstOrDefault(ped => ped.Produto == pedido.Produto);
 
                 if (p != null)
                 {
-                    TempData["existePedidoInfo"] = "Pedido já existe";
+                    TempData["existePedidoInfo"] = "Pedido já foi cadastrado";
                     return RedirectToAction(nameof(CadastrarPedido));
                 }
                 else
@@ -62,7 +58,5 @@ namespace WebAppPedidos.Controllers
             catch (Exception e) { throw e; }
             return RedirectToAction(nameof(ListarPedidos));
         }
-
-
     }
 }
