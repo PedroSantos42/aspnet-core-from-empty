@@ -6,16 +6,38 @@ using System.Threading.Tasks;
 using WebAppPedidos.Data;
 using WebAppPedidos.Models;
 
+// Cláudia Urbano da Cruz
 namespace WebAppPedidos.Controllers
 {
     public class PedidoController : Controller
     {
-        // Daniel Hideki Yoshioka
         private readonly PedidoContext _context;
 
         public PedidoController(PedidoContext context)
         {
             _context = context;
+        }
+
+
+        public IActionResult CadastrarPedido()
+        {
+            ViewData["existePedido"] = TempData["existePedidoInfo"];
+            return View();
+        }
+
+        public IActionResult ListarPedidos()
+        {
+            List<Pedido> list;
+            try
+            {
+                list = _context.Pedido.Where(p => p != null).ToList();
+            }
+            catch (Exception e) 
+            { 
+                throw e; 
+            }
+            ViewData["ListaPedidos"] = list;
+            return View();
         }
 
         [HttpPost]
@@ -27,8 +49,7 @@ namespace WebAppPedidos.Controllers
 
                 if (p != null)
                 {
-                    ViewBag.Message = "Falha ao cadastrar: Produto existente.";
-                    TempData["existePedidoInfo"] = "Pedido já cadastrado";
+                    TempData["existePedidoInfo"] = "Pedido já existe";
                     return RedirectToAction(nameof(CadastrarPedido));
                 }
                 else
@@ -42,25 +63,6 @@ namespace WebAppPedidos.Controllers
             return RedirectToAction(nameof(ListarPedidos));
         }
 
-        public IActionResult CadastrarPedido()
-        {
-            ViewData["existePedido"] = TempData["existePedidoInfo"];
-            return View();
-        }
 
-        public IActionResult ListarPedidos()
-        {
-            List<Pedido> list;
-
-            try
-            {
-                list = _context.Pedido.Where(p => p != null).ToList();
-            }
-            catch (Exception e) { throw e; }
-
-            ViewData["ListaPedidos"] = list;
-
-            return View();
-        }
     }
 }

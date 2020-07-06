@@ -1,11 +1,5 @@
 ﻿<title>Cadastro de Pedidos</title>
 <body>
-    @{ var existePedidoInfo = ViewData["existePedido"];
-        if (existePedidoInfo != null)
-        {
-            <script>alert("Este pedido já existe!")</script>
-        }
-    }
     <h2>Criar Pedido</h2>
     <br />
     <div class="row">
@@ -41,4 +35,10 @@
             }
         </div>
     </div>
+    @{ var existePedidoInfo = ViewData["existePedido"];
+        if (existePedidoInfo != null)
+        {
+            <script>alert("Este pedido já possui um cadastro...")</script>
+        }
+    }
 </body>
