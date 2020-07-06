@@ -11,6 +11,7 @@ using WebAppPedidos.Models;
 
 namespace WebAppPedidos.Controllers
 {
+    // Caio Augusto Radnuz Filho
     public class PedidoController : Controller
     {
         private readonly PedidoContext _context;
@@ -37,6 +38,7 @@ namespace WebAppPedidos.Controllers
 
         public IActionResult CadastrarPedido()
         {
+            ViewData["existePedido"] = TempData["existePedidoInfo"];
             return View();
         }
 
@@ -50,6 +52,7 @@ namespace WebAppPedidos.Controllers
                 if (p != null)
                 {
                     ViewBag.Message = "Falha ao cadastrar: Produto existente.";
+                    TempData["existePedidoInfo"] = "Pedido já cadastrado";
                     return RedirectToAction(nameof(CadastrarPedido));
                 }
                 else

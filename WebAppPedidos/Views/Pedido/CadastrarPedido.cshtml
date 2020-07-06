@@ -1,4 +1,10 @@
-﻿
+﻿@{ var existePedidoInfo = ViewData["existePedido"];
+    if (existePedidoInfo != null)
+    {
+        <script>alert("Pedido já foi cadastrado!")</script>
+    }
+}
+
 <title>Cadastro de Pedidos</title>
 
 <body>
