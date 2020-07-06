@@ -11,7 +11,7 @@ using WebAppPedidos.Models;
 
 namespace WebAppPedidos.Controllers
 {
-    // Caio Augusto Radnuz Filho
+    // Carlos Augusto Radnuz Filho
     public class PedidoController : Controller
     {
         private readonly PedidoContext _context;
