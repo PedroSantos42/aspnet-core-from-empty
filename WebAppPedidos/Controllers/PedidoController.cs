@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
+using System.Web;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -34,6 +36,7 @@ namespace WebAppPedidos.Controllers
 
         public IActionResult CadastrarPedido()
         {
+            ViewData["existePedido"] = TempData["existePedidoInfo"];
             return View();
         }
 
@@ -46,11 +49,12 @@ namespace WebAppPedidos.Controllers
 
                 if (p != null)
                 {
-                    ViewBag.Message = "Falha ao cadastrar: Produto existente.";
+                    TempData["existePedidoInfo"] = "Pedido já cadastrado";
                     return RedirectToAction(nameof(CadastrarPedido));
                 }
                 else
                 {
+                    TempData["existePedidoInfo"] = false;
                     _context.Add(pedido);
                     await _context.SaveChangesAsync();
                 }
