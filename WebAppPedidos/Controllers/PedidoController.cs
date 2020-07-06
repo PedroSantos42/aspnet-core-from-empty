@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,35 +8,14 @@ using WebAppPedidos.Models;
 
 namespace WebAppPedidos.Controllers
 {
-    // Carlos Augusto Radunz Filho
     public class PedidoController : Controller
     {
+        // Daniel Hideki Yoshioka
         private readonly PedidoContext _context;
 
         public PedidoController(PedidoContext context)
         {
             _context = context;
-        }
-
-        public IActionResult ListarPedidos()
-        {
-            List<Pedido> list;
-
-            try
-            {
-                list = _context.Pedido.Where(p => p != null).ToList();
-            }
-            catch (Exception e) { throw e; }
-
-            ViewData["ListaPedidos"] = list;
-
-            return View();
-        }
-
-        public IActionResult CadastrarPedido()
-        {
-            ViewData["existePedido"] = TempData["existePedidoInfo"];
-            return View();
         }
 
         [HttpPost]
@@ -64,6 +40,27 @@ namespace WebAppPedidos.Controllers
             }
             catch (Exception e) { throw e; }
             return RedirectToAction(nameof(ListarPedidos));
+        }
+
+        public IActionResult CadastrarPedido()
+        {
+            ViewData["existePedido"] = TempData["existePedidoInfo"];
+            return View();
+        }
+
+        public IActionResult ListarPedidos()
+        {
+            List<Pedido> list;
+
+            try
+            {
+                list = _context.Pedido.Where(p => p != null).ToList();
+            }
+            catch (Exception e) { throw e; }
+
+            ViewData["ListaPedidos"] = list;
+
+            return View();
         }
     }
 }

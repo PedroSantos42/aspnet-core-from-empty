@@ -1,13 +1,11 @@
-﻿@{ var existePedidoInfo = ViewData["existePedido"];
-    if (existePedidoInfo != null)
-    {
-        <script>alert("Erro ao cadastrar! Pedido já existe!")</script>
-    }
-}
-
-<title>Cadastro de Pedidos</title>
-
+﻿<title>Cadastro de Pedidos</title>
 <body>
+    @{ var existePedidoInfo = ViewData["existePedido"];
+        if (existePedidoInfo != null)
+        {
+            <script>alert("Este pedido já existe!")</script>
+        }
+    }
     <h2>Criar Pedido</h2>
     <br />
     <div class="row">
